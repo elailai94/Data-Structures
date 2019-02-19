@@ -4,12 +4,17 @@ class Node:
         self.next = next
 
     def __str__(self):
+        """
+        Return the string representation of the node.
+
+        Time: O(1)
+        """
         string = f'Value: {self.value}, Next: '
 
         if self.next is None:
             string += 'None'
         else:
-            string += '->'
+            string += '→'
 
         return string
 
@@ -21,7 +26,7 @@ class SinglyLinkedList:
         """
         Access the value at the given index in the linked list.
 
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         current_index = 0
         current_node = self.head
@@ -37,8 +42,8 @@ class SinglyLinkedList:
     def __len__(self):
         """
         Return the length (i.e.: number of nodes) in the linked list.
-        
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         length = 0
         current_node = self.head
@@ -53,7 +58,7 @@ class SinglyLinkedList:
         """
         Return the string representation of the linked list.
 
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         string = ''
         current_node = self.head
@@ -69,8 +74,8 @@ class SinglyLinkedList:
     def append(self, value):
         """
         Add a value to the end of the linked list.
-        
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         new_node = Node(value)
 
@@ -86,7 +91,7 @@ class SinglyLinkedList:
         """
         Insert a value at the given index in the linked list.
 
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         new_node = Node(value)
 
@@ -114,7 +119,7 @@ class SinglyLinkedList:
         """
         Remove a value from the linked list.
 
-        Time complexity: O(n) where n is the number of nodes in the linked list.
+        Time: O(n) where n is the number of nodes in the linked list.
         """
         error_message = f'linkedlist.remove({value}) {value} not in linked list'
 
