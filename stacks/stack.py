@@ -11,10 +11,10 @@ class Node:
         """
         string = f'Value: {self.value}, Next: '
 
-        if self.next is None:
-            string += 'None'
-        else:
+        if self.next:
             string += '↓'
+        else:
+            string += 'None'
 
         return string
 
@@ -31,7 +31,7 @@ class Stack:
         length = 0
         current_node = self.top
 
-        while current_node is not None:
+        while current_node:
             length += 1
             current_node = current_node.next
 
@@ -46,12 +46,12 @@ class Stack:
         string = ''
         current_node = self.top
 
-        while current_node is not None:
+        while current_node:
             string += str(current_node)
-            if current_node.next is not None:
+            if current_node.next:
                 string += '\n'
             current_node = current_node.next
-        
+
         return string
 
     def peek(self):
@@ -60,10 +60,10 @@ class Stack:
 
         Time: O(1)
         """
-        if self.top is None:
-            raise IndexError('peek from empty list')
-        else:
+        if self.top:
             return self.top.value
+        else:
+            raise IndexError('peek from empty list')
 
     def pop(self):
         """
@@ -71,12 +71,12 @@ class Stack:
 
         Time: O(1)
         """
-        if self.top is None:
-            raise IndexError('pop from empty list')
-        else:
+        if self.top:
             value = self.top.value
             self.top = self.top.next
             return value
+        else:
+            raise IndexError('pop from empty list')
 
     def push(self, value):
         """

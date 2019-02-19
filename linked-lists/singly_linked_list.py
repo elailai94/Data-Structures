@@ -11,10 +11,10 @@ class Node:
         """
         string = f'Value: {self.value}, Next: '
 
-        if self.next is None:
-            string += 'None'
-        else:
+        if self.next:
             string += '→'
+        else:
+            string += 'None'
 
         return string
 
@@ -31,7 +31,7 @@ class SinglyLinkedList:
         current_index = 0
         current_node = self.head
 
-        while (current_index <= index and current_node is not None):
+        while current_index <= index and current_node:
             if current_index == index:
                 return current_node.value
             current_index += 1
@@ -48,7 +48,7 @@ class SinglyLinkedList:
         length = 0
         current_node = self.head
         
-        while current_node is not None:
+        while current_node:
             length += 1
             current_node = current_node.next
 
@@ -63,9 +63,9 @@ class SinglyLinkedList:
         string = ''
         current_node = self.head
 
-        while current_node is not None:
+        while current_node:
             string += str(current_node)
-            if current_node.next is not None:
+            if current_node.next:
                 string += ' '
             current_node = current_node.next
 
@@ -79,13 +79,13 @@ class SinglyLinkedList:
         """
         new_node = Node(value)
 
-        if self.head is None:
-            self.head = new_node
-        else:
+        if self.head:
             current_node = self.head
-            while current_node.next is not None:
+            while current_node.next:
                 current_node = current_node.next
             current_node.next = new_node
+        else:
+            self.head = new_node
 
     def insert(self, index, value):
         """
@@ -95,25 +95,25 @@ class SinglyLinkedList:
         """
         new_node = Node(value)
 
-        if self.head is None:
-            self.head = new_node
-        else:
+        if self.head:
             if index == 0:
                 new_node.next = self.head
                 self.head = new_node
             elif index > 0:
                 current_index = 0
                 current_node = self.head
-                
-                while (current_index < index and current_node is not None):
+
+                while current_index < index and current_node:
                     if current_index == index - 1:
                         new_node.next = current_node.next
                         current_node.next = new_node
                         return
                     current_index += 1
                     current_node = current_node.next
-                
+
                 self.append(value)
+        else:
+            self.head = new_node
 
     def remove(self, value):
         """
@@ -123,21 +123,20 @@ class SinglyLinkedList:
         """
         error_message = f'linkedlist.remove({value}) {value} not in linked list'
 
-        if self.head is None:
-            raise ValueError(error_message)
-        else:
+        if self.head:
             previous_node = None
             current_node = self.head
-            
-            while (current_node.value != value and
-                current_node.next is not None):
+
+            while current_node.value != value and current_node.next:
                 previous_node = current_node
                 current_node = current_node.next
-            
+
             if current_node.value == value:
-                if previous_node is None:
-                    self.head = current_node.next
-                else:
+                if previous_node:
                     previous_node.next = current_node.next
+                else:
+                    self.head = current_node.next
             else:
                 raise ValueError(error_message)
+        else:
+            raise ValueError(error_message)
