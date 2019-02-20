@@ -1,5 +1,18 @@
+# =============================================================================
+#  Singly Linked List
+#
+#  @author: Elisha Lai
+#  @description: Module for implementing a singly linked list.
+#  @version: 0.0.1 19/02/2019
+# =============================================================================
+
 class Node:
     def __init__(self, value, next=None):
+        """
+        Create a new instance of a node.
+
+        Time: O(1)
+        """
         self.value = value
         self.next = next
 
@@ -20,6 +33,11 @@ class Node:
 
 class SinglyLinkedList:
     def __init__(self, head=None):
+        """
+        Create a new instance of a linked list.
+
+        Time: O(1)
+        """
         self.head = head
 
     def __getitem__(self, index):
@@ -41,7 +59,7 @@ class SinglyLinkedList:
 
     def __len__(self):
         """
-        Return the length (i.e.: number of nodes) in the linked list.
+        Return the length (i.e.: number of nodes) of the linked list.
 
         Time: O(n) where n is the number of nodes in the linked list.
         """
