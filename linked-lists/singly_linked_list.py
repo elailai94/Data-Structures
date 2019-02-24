@@ -22,14 +22,12 @@ class Node:
 
         Time: O(1)
         """
-        string = f'Value: {self.value}, Next: '
+        next = 'None'
 
         if self.next:
-            string += '→'
-        else:
-            string += 'None'
-
-        return string
+            next = '→'
+        
+        return f'Value: {self.value}, Next: {next}'
 
 class SinglyLinkedList:
     def __init__(self, head=None):
@@ -52,6 +50,7 @@ class SinglyLinkedList:
         while current_index <= index and current_node:
             if current_index == index:
                 return current_node.value
+
             current_index += 1
             current_node = current_node.next
 
@@ -83,8 +82,10 @@ class SinglyLinkedList:
 
         while current_node:
             string += str(current_node)
+
             if current_node.next:
                 string += ' '
+
             current_node = current_node.next
 
         return string
@@ -99,8 +100,10 @@ class SinglyLinkedList:
 
         if self.head:
             current_node = self.head
+
             while current_node.next:
                 current_node = current_node.next
+
             current_node.next = new_node
         else:
             self.head = new_node
@@ -125,7 +128,9 @@ class SinglyLinkedList:
                     if current_index == index - 1:
                         new_node.next = current_node.next
                         current_node.next = new_node
+
                         return
+
                     current_index += 1
                     current_node = current_node.next
 

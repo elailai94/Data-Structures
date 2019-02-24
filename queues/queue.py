@@ -15,21 +15,19 @@ class Node:
         """
         self.value = value
         self.next = next
-
+    
     def __str__(self):
         """
         Return the string representation of the node.
 
         Time: O(1)
         """
-        string = f'Value: {self.value}, Next: '
+        next = 'None'
 
         if self.next:
-            string += '→'
-        else:
-            string += 'None'
+            next = '→'
 
-        return string
+        return f'Value: {self.value}, Next: {next}'
 
 class Queue:
     def __init__(self, head=None, tail=None):
@@ -67,8 +65,10 @@ class Queue:
 
         while current_node:
             string += str(current_node)
+
             if current_node.next:
                 string += ' '
+
             current_node = current_node.next
 
         return string
@@ -82,8 +82,10 @@ class Queue:
         if self.head:
             value = self.head.value
             self.head = self.head.next
+
             if not self.head:
                 self.tail = self.head
+
             return value
         else:
             raise IndexError('dequeue from empty queue')
@@ -95,6 +97,7 @@ class Queue:
         Time: O(1)
         """
         new_node = Node(value)
+
         if self.tail:
             self.tail.next = new_node
             self.tail = new_node

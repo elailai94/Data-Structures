@@ -22,14 +22,12 @@ class Node:
 
         Time: O(1)
         """
-        string = f'Value: {self.value}, Next: '
+        next = 'None'
 
         if self.next:
-            string += '↓'
-        else:
-            string += 'None'
-
-        return string
+            next = '↓'
+        
+        return f'Value: {self.value}, Next: {next}'
 
 class Stack:
     def __init__(self, top=None):
@@ -66,8 +64,10 @@ class Stack:
 
         while current_node:
             string += str(current_node)
+
             if current_node.next:
                 string += '\n'
+
             current_node = current_node.next
 
         return string
@@ -92,6 +92,7 @@ class Stack:
         if self.top:
             value = self.top.value
             self.top = self.top.next
+
             return value
         else:
             raise IndexError('pop from empty stack')
